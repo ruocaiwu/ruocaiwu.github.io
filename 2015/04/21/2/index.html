@@ -1,28 +1,31 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | 一望无垠</title>
+    <title>Hexo 优化与定制(二) | 一望无垠</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="wing">
     
 
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="Golang中文社区 | Go语言学习园地 源码
+网站上线时间：2013-03-15 14:38:09
+目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2015/04/20/1/index.html">
+<meta property="og:title" content="Hexo 优化与定制(二)">
+<meta property="og:url" content="http://yoursite.com/2015/04/21/2/index.html">
 <meta property="og:site_name" content="一望无垠">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta property="og:description" content="Golang中文社区 | Go语言学习园地 源码
+网站上线时间：2013-03-15 14:38:09
+目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Hexo 优化与定制(二)">
+<meta name="twitter:description" content="Golang中文社区 | Go语言学习园地 源码
+网站上线时间：2013-03-15 14:38:09
+目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。">
 
     
     <link rel="alternative" href="/atom.xml" title="一望无垠" type="application/atom+xml">
@@ -43,7 +46,7 @@ Quick">
 				<h1 class="site-name"><a href="/" title="一望无垠">一望无垠</a></h1>
 				<h2 class="blog-motto">测试测试测试标题</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -75,41 +78,69 @@ Quick">
 		<header class="article-info">
   <h1 itemprop="name">
     
-      <a href="/2015/04/20/1/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2015/04/21/2/" title="Hexo 优化与定制(二)" itemprop="url">Hexo 优化与定制(二)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
 		
   <p class="article-time">
-    <time datetime="2015-04-20T03:17:26.000Z" itemprop="datePublished"> 發表於 2015-04-20</time>
+    <time datetime="2015-04-21T05:16:38.000Z" itemprop="datePublished"> 发表于 2015-04-21</time>
     
   </p>
 </header>
 
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-		
-		</div>
-		
-		<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<p><a href="http://studygolang.com" title="Golang中文社区 | Go语言学习园地" target="_blank" rel="external">Golang中文社区 | Go语言学习园地</a> 源码</p>
+<p>网站上线时间：2013-03-15 14:38:09</p>
+<p>目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。<br><a id="more"></a></p>
+<h2 id="目前在正开发或需要开发的功能">目前在正开发或需要开发的功能</h2><ol>
+<li>小贴士</li>
+<li>收藏</li>
+<li>关注</li>
+<li>用第三方账号登录</li>
+<li>绑定github后显示其代码</li>
+<li>同步到微博？</li>
+<li>博文评论 @用户 待完善</li>
+</ol>
+<h2 id="本地搭建一个_Golang_社区">本地搭建一个 Golang 社区</h2><p>1、下载 studygolang 代码</p>
+<pre><code>git clone <span class="string">https:</span><span class="comment">//github.com/studygolang/studygolang</span>
+</code></pre><p>2、下载安装依赖库（如果依赖库下载不下来可以联系我）</p>
+<pre><code><span class="keyword">cd</span> studygolang/websites/code/thirdparty
+<span class="comment">// windows 下执行</span>
+getpkg.bat
+<span class="comment">// linux/mac 下执行</span>
+<span class="keyword">sh</span> getpkg
+</code></pre><p>3、编译并运行 studygolang</p>
+<p>先编译</p>
+<pre><code><span class="comment">// 接着上一步</span>
+<span class="keyword">cd</span> ../studygolang/
+<span class="comment">// windows 下执行</span>
+install.bat
+<span class="comment">// linux/mac 下执行</span>
+<span class="keyword">sh</span> install
+</code></pre><p>这样便编译好了 studygolang，下面运行 studygolang。（运行前可以根据需要修改 config/config.json.example 配置，当然首先得改名为 config.json）</p>
+<pre><code><span class="comment">// windows 下执行</span>
+start<span class="class">.bat</span>
+<span class="comment">// linux/mac 下执行</span>
+sh start
+</code></pre><p>一切顺利的话，studygolang 应该就启动了。</p>
+<p>4、浏览器中查看</p>
+<p>在浏览器中输入：<a href="http://127.0.0.1:8080" target="_blank" rel="external">http://127.0.0.1:8080</a></p>
+<p>应该就能看到了。</p>
+<p>5、建立数据库</p>
+<p>运行起来了，但没有建数据库。源码中有一个 databases 文件夹，里面有建表和初始化的sql语句。之前这些sql之前，在mysql数据库中建立一个数据库：studygolang，之后执行这些sql语句。</p>
+<p>根据你的数据库设置，修改上面提到的 <code>config/config.json</code> 对应的配置，重新启动 studygolang.（通过restart脚本重新启动）</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/test/">test</a>
+</div>
 
 
 </div>
@@ -118,7 +149,7 @@ Quick">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/04/20/1/" data-title="Hello World | 一望无垠" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/04/21/2/" data-title="Hexo 优化与定制(二) | 一望无垠" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -132,38 +163,50 @@ Quick">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/04/20/2/" title="Hello World">
+ <a href="/2015/04/21/中文测试/" title="中文测试">
   <strong>上一篇：</strong><br/>
   <span>
-  Hello World</span>
+  中文测试</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2015/04/21/1/"  title="Hexo 优化与定制(一)">
+ <strong>下一篇：</strong><br/> 
+ <span>Hexo 优化与定制(一)
+</span>
+</a>
+</div>
 
 </nav>
 
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
- 
-  </div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/test/" title="test">test<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
     </ul>
@@ -173,7 +216,7 @@ Quick">
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -249,8 +292,6 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
@@ -355,7 +396,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
