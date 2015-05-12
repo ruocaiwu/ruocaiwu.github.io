@@ -74,27 +74,31 @@
         <header class="article-info">
   <h1 itemprop="name">
     
-      <a href="/2015/04/21/来自ssh方式的提交/" title="来自ssh方式的提交" itemprop="url">来自ssh方式的提交</a>
+      <a href="/2015/05/11/go-slice学习/" title="go slice学习" itemprop="url">go slice学习</a>
   </h1>
   <p class="article-author">作者:
        
 		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
 		
   <p class="article-time">
-    <time datetime="2015-04-21T09:59:49.000Z" itemprop="datePublished"> 日期: 2015-04-21</time>
+    <time datetime="2015-05-11T03:13:26.000Z" itemprop="datePublished"> 日期: 2015-05-11</time>
     
   </p>
 </header>
 
     <div class="article-content">
         
-        <pre><code><span class="built_in">print</span> <span class="string">"添加公钥后的免密码提交"</span>
-</code></pre>
+        <p>看官方的文档时发现一份<a href="http://golang.org/doc/articles/slices_usage_and_internals.html" target="_blank" rel="external">slice：使用和内幕</a>,记录一下</p>
+<h2 id="一、Arrays">一、Arrays</h2><p><strong>array的定义</strong><br>(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分<br>(2)array并不需要被显式的初始化<br>(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）</p>
+<p><strong>一个array可以被这样声明</strong><br>b := [2]string{“Penn”, “Teller”}<br>b := […]string{“Penn”, “Teller”}</p>
+<h2 id="二、Slice">二、Slice</h2><p>因为数组的长度不可改变,所以在一些特定的场合下就不太适用,因此GO提供了slice（“动态数组”）.<br>一个slice类型定义为[]T,T表示其中元素的类型,与数组不同的是 slice没有指定其长度， 我们通过两种方式去声明它</p>
+<blockquote>
+<p>1.类似于数组的声明，但是填充不加元素的个数<br>letters := []string{“a”,”b”,”c”,”d”}<br>2.使用<strong><em>func make([]T, len, cap) []T </em></strong>去声明  </p>
+</blockquote>
+
         
         
         <p class="article-more-link">
-          
-            <a href="/2015/04/21/来自ssh方式的提交/#more">阅读全文</a>
           
        </p>
     </div>
@@ -103,182 +107,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/ssh/">ssh</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info">
-  <h1 itemprop="name">
-    
-      <a href="/2015/04/21/中文测试/" title="中文测试" itemprop="url">中文测试</a>
-  </h1>
-  <p class="article-author">作者:
-       
-		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
-		
-  <p class="article-time">
-    <time datetime="2015-04-21T05:16:38.000Z" itemprop="datePublished"> 日期: 2015-04-21</time>
-    
-  </p>
-</header>
-
-    <div class="article-content">
-        
-        <p><a href="http://studygolang.com" title="Golang中文社区 | Go语言学习园地">Golang中文社区 | Go语言学习园地</a> 源码</p>
-<p>网站上线时间：2013-03-15 14:38:09</p>
-<p>目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/04/21/中文测试/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/test/">test</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info">
-  <h1 itemprop="name">
-    
-      <a href="/2015/04/21/2/" title="Hexo 优化与定制(二)" itemprop="url">Hexo 优化与定制(二)</a>
-  </h1>
-  <p class="article-author">作者:
-       
-		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
-		
-  <p class="article-time">
-    <time datetime="2015-04-21T05:16:38.000Z" itemprop="datePublished"> 日期: 2015-04-21</time>
-    
-  </p>
-</header>
-
-    <div class="article-content">
-        
-        <p>目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/04/21/2/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/test/">test</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info">
-  <h1 itemprop="name">
-    
-      <a href="/2015/04/21/1/" title="Hexo 优化与定制(一)" itemprop="url">Hexo 优化与定制(一)</a>
-  </h1>
-  <p class="article-author">作者:
-       
-		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
-		
-  <p class="article-time">
-    <time datetime="2015-04-21T05:16:38.000Z" itemprop="datePublished"> 日期: 2015-04-21</time>
-    
-  </p>
-</header>
-
-    <div class="article-content">
-        
-        <p><a href="http://studygolang.com" title="Golang中文社区 | Go语言学习园地">Golang中文社区 | Go语言学习园地</a> 源码</p>
-<p>网站上线时间：2013-03-15 14:38:09</p>
-<p>目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/04/21/1/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/test/">test</a>
+  <a class="article-category-link" href="/categories/golang/">golang</a>
 </div>
 
 
@@ -315,11 +144,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/ssh/" title="ssh">ssh<sup></sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/test/" title="test">test<sup></sup></a></li>
+			<li><a href="/categories/golang/" title="golang">golang<sup></sup></a></li>
 		  
 		
 		</ul>

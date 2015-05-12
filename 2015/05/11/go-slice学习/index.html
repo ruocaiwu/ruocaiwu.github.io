@@ -4,23 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo 优化与定制(二) | 一望无垠</title>
+    <title>go slice学习 | 一望无垠</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="wing">
     
 
     
-    <meta name="description" content="目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。">
+    <meta name="description" content="看官方的文档时发现一份slice：使用和内幕,记录一下
+一、Arraysarray的定义(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分(2)array并不需要被显式的初始化(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）
+一个array可以被这样声明b := [2]s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 优化与定制(二)">
-<meta property="og:url" content="http://yoursite.com/2015/04/21/2/index.html">
+<meta property="og:title" content="go slice学习">
+<meta property="og:url" content="http://yoursite.com/2015/05/11/go-slice学习/index.html">
 <meta property="og:site_name" content="一望无垠">
-<meta property="og:description" content="目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/aeba7ac3jw1eqr0gdcb63j20ic0a4400.jpg">
+<meta property="og:description" content="看官方的文档时发现一份slice：使用和内幕,记录一下
+一、Arraysarray的定义(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分(2)array并不需要被显式的初始化(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）
+一个array可以被这样声明b := [2]s">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 优化与定制(二)">
-<meta name="twitter:description" content="目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。">
+<meta name="twitter:title" content="go slice学习">
+<meta name="twitter:description" content="看官方的文档时发现一份slice：使用和内幕,记录一下
+一、Arraysarray的定义(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分(2)array并不需要被显式的初始化(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）
+一个array可以被这样声明b := [2]s">
 
     
     <link rel="alternative" href="/atom.xml" title="一望无垠" type="application/atom+xml">
@@ -73,58 +78,27 @@
 		<header class="article-info">
   <h1 itemprop="name">
     
-      <a href="/2015/04/21/2/" title="Hexo 优化与定制(二)" itemprop="url">Hexo 优化与定制(二)</a>
+      <a href="/2015/05/11/go-slice学习/" title="go slice学习" itemprop="url">go slice学习</a>
   </h1>
   <p class="article-author">作者:
        
 		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
 		
   <p class="article-time">
-    <time datetime="2015-04-21T05:16:38.000Z" itemprop="datePublished"> 日期: 2015-04-21</time>
+    <time datetime="2015-05-11T03:13:26.000Z" itemprop="datePublished"> 日期: 2015-05-11</time>
     
   </p>
 </header>
 
 	<div class="article-content">
 		
-		<p>目前只开发了主要功能，还有不少功能在不断开发中。欢迎有兴趣的gopher们参与进来，一起构建一个完善的 Golang 中文社区，Go语言爱好者的学习家园。<br><a id="more"></a></p>
-<h2 id="目前在正开发或需要开发的功能">目前在正开发或需要开发的功能</h2><ol>
-<li>小贴士</li>
-<li>收藏</li>
-<li>关注</li>
-<li>用第三方账号登录</li>
-<li>绑定github后显示其代码</li>
-<li>同步到微博？</li>
-<li>博文评论 @用户 待完善<br><img src="http://ww1.sinaimg.cn/mw690/aeba7ac3jw1eqr0gdcb63j20ic0a4400.jpg" alt=""></li>
-</ol>
-<h2 id="本地搭建一个_Golang_社区">本地搭建一个 Golang 社区</h2><p>1、下载 studygolang 代码</p>
-<pre><code>git clone <span class="string">https:</span><span class="comment">//github.com/studygolang/studygolang</span>
-</code></pre><p>2、下载安装依赖库（如果依赖库下载不下来可以联系我）</p>
-<pre><code><span class="keyword">cd</span> studygolang/websites/code/thirdparty
-<span class="comment">// windows 下执行</span>
-getpkg.bat
-<span class="comment">// linux/mac 下执行</span>
-<span class="keyword">sh</span> getpkg
-</code></pre><p>3、编译并运行 studygolang</p>
-<p>先编译</p>
-<pre><code><span class="comment">// 接着上一步</span>
-<span class="keyword">cd</span> ../studygolang/
-<span class="comment">// windows 下执行</span>
-install.bat
-<span class="comment">// linux/mac 下执行</span>
-<span class="keyword">sh</span> install
-</code></pre><p>这样便编译好了 studygolang，下面运行 studygolang。（运行前可以根据需要修改 config/config.json.example 配置，当然首先得改名为 config.json）</p>
-<pre><code><span class="comment">// windows 下执行</span>
-start<span class="class">.bat</span>
-<span class="comment">// linux/mac 下执行</span>
-sh start
-</code></pre><p>一切顺利的话，studygolang 应该就启动了。</p>
-<p>4、浏览器中查看</p>
-<p>在浏览器中输入：<a href="http://127.0.0.1:8080" target="_blank" rel="external">http://127.0.0.1:8080</a></p>
-<p>应该就能看到了。</p>
-<p>5、建立数据库</p>
-<p>运行起来了，但没有建数据库。源码中有一个 databases 文件夹，里面有建表和初始化的sql语句。之前这些sql之前，在mysql数据库中建立一个数据库：studygolang，之后执行这些sql语句。</p>
-<p>根据你的数据库设置，修改上面提到的 <code>config/config.json</code> 对应的配置，重新启动 studygolang.（通过restart脚本重新启动）</p>
+		<p>看官方的文档时发现一份<a href="http://golang.org/doc/articles/slices_usage_and_internals.html" target="_blank" rel="external">slice：使用和内幕</a>,记录一下</p>
+<h2 id="一、Arrays">一、Arrays</h2><p><strong>array的定义</strong><br>(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分<br>(2)array并不需要被显式的初始化<br>(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）</p>
+<p><strong>一个array可以被这样声明</strong><br>b := [2]string{“Penn”, “Teller”}<br>b := […]string{“Penn”, “Teller”}</p>
+<h2 id="二、Slice">二、Slice</h2><p>因为数组的长度不可改变,所以在一些特定的场合下就不太适用,因此GO提供了slice（“动态数组”）.<br>一个slice类型定义为[]T,T表示其中元素的类型,与数组不同的是 slice没有指定其长度， 我们通过两种方式去声明它</p>
+<blockquote>
+<p>1.类似于数组的声明，但是填充不加元素的个数<br>letters := []string{“a”,”b”,”c”,”d”}<br>2.使用<strong><em>func make([]T, len, cap) []T </em></strong>去声明  </p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -132,7 +106,7 @@ sh start
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/test/">test</a>
+  <a class="article-category-link" href="/categories/golang/">golang</a>
 </div>
 
 
@@ -142,7 +116,7 @@ sh start
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/04/21/2/" data-title="Hexo 优化与定制(二) | 一望无垠" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/05/11/go-slice学习/" data-title="go slice学习 | 一望无垠" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,27 +127,6 @@ sh start
    	       
 	</article>
 	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2015/04/21/中文测试/" title="中文测试">
-  <strong>上一篇：</strong><br/>
-  <span>
-  中文测试</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2015/04/21/1/"  title="Hexo 优化与定制(一)">
- <strong>下一篇：</strong><br/> 
- <span>Hexo 优化与定制(一)
-</span>
-</a>
-</div>
-
-</nav>
-
 	
 
 </div>  
