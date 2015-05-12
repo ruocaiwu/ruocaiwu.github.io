@@ -4,28 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>go slice学习 | 一望无垠</title>
+    <title>有趣的tick | 一望无垠</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="wing">
     
 
     
-    <meta name="description" content="看官方的文档时发现一份slice：使用和内幕,记录一下
-一、Arraysarray的定义(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分(2)array并不需要被显式的初始化(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）
-一个array可以被这样声明b := [2]s">
+    <meta name="description" content="1.markdown段首空行　　在markdown中使用空格是解析不出来的，但是想要空行的话还是有可以的，切换中文输入法，选择全角输入，这时候空格就会被解析出来。2.红杏的免费流量代理　　红杏有一个公益代理 红杏公益版, 可以用于代理一些特定域名的流量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go slice学习">
-<meta property="og:url" content="http://yoursite.com/2015/05/11/go-slice学习/index.html">
+<meta property="og:title" content="有趣的tick">
+<meta property="og:url" content="http://yoursite.com/2015/05/12/有趣的tick/index.html">
 <meta property="og:site_name" content="一望无垠">
-<meta property="og:description" content="看官方的文档时发现一份slice：使用和内幕,记录一下
-一、Arraysarray的定义(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分(2)array并不需要被显式的初始化(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）
-一个array可以被这样声明b := [2]s">
+<meta property="og:description" content="1.markdown段首空行　　在markdown中使用空格是解析不出来的，但是想要空行的话还是有可以的，切换中文输入法，选择全角输入，这时候空格就会被解析出来。2.红杏的免费流量代理　　红杏有一个公益代理 红杏公益版, 可以用于代理一些特定域名的流量">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go slice学习">
-<meta name="twitter:description" content="看官方的文档时发现一份slice：使用和内幕,记录一下
-一、Arraysarray的定义(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分(2)array并不需要被显式的初始化(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）
-一个array可以被这样声明b := [2]s">
+<meta name="twitter:title" content="有趣的tick">
+<meta name="twitter:description" content="1.markdown段首空行　　在markdown中使用空格是解析不出来的，但是想要空行的话还是有可以的，切换中文输入法，选择全角输入，这时候空格就会被解析出来。2.红杏的免费流量代理　　红杏有一个公益代理 红杏公益版, 可以用于代理一些特定域名的流量">
 
     
     <link rel="alternative" href="/atom.xml" title="一望无垠" type="application/atom+xml">
@@ -78,27 +72,21 @@
 		<header class="article-info">
   <h1 itemprop="name">
     
-      <a href="/2015/05/11/go-slice学习/" title="go slice学习" itemprop="url">go slice学习</a>
+      <a href="/2015/05/12/有趣的tick/" title="有趣的tick" itemprop="url">有趣的tick</a>
   </h1>
   <p class="article-author">作者:
        
 		<a href="/about" title="wing" target="_blank" itemprop="author">wing</a>
 		
   <p class="article-time">
-    <time datetime="2015-05-11T03:13:26.000Z" itemprop="datePublished"> 日期: 2015-05-11</time>
+    <time datetime="2015-05-12T08:00:20.000Z" itemprop="datePublished"> 日期: 2015-05-12</time>
     
   </p>
 </header>
 
 	<div class="article-content">
 		
-		<p>看官方的文档时发现一份<a href="http://golang.org/doc/articles/slices_usage_and_internals.html" target="_blank" rel="external">slice：使用和内幕</a>,记录一下</p>
-<h2 id="一、Arrays">一、Arrays</h2><p><strong>array的定义</strong><br>(1)一个array类型定义了指定的长度和元素类型,因此array的长度也是类型的一部分<br>(2)array并不需要被显式的初始化<br>(3)array变量表示了整个array，这就意味着如果你将其作为方法的参数传入时，将拷贝其中所有内容（因此为避免拷贝你可以传递一个指针）</p>
-<p><strong>一个array可以被这样声明</strong><br>b := [2]string{“Penn”, “Teller”}<br>b := […]string{“Penn”, “Teller”}</p>
-<h2 id="二、Slice">二、Slice</h2><p>因为数组的长度不可改变,所以在一些特定的场合下就不太适用,因此GO提供了slice（“动态数组”）.<br>一个slice类型定义为[]T,T表示其中元素的类型,与数组不同的是 slice没有指定其长度， 我们通过两种方式去声明它</p>
-<blockquote>
-<p>1.类似于数组的声明，但是填充不加元素的个数<br>letters := []string{“a”,”b”,”c”,”d”}<br>2.使用<strong><em>func make([]T, len, cap) []T </em></strong>去声明  </p>
-</blockquote>
+		<p>1.markdown段首空行<br>　　在markdown中使用空格是解析不出来的，但是想要空行的话还是有可以的，切换中文输入法，选择全角输入，这时候空格就会被解析出来。<br>2.红杏的免费流量代理<br>　　红杏有一个公益代理 <a href="http://blog.honx.in/dev-only/" target="_blank" rel="external">红杏公益版</a>, 可以用于代理一些特定域名的流量</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -106,7 +94,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/golang/">golang</a>
+  <a class="article-category-link" href="/categories/tick/">tick</a>
 </div>
 
 
@@ -116,7 +104,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/05/11/go-slice学习/" data-title="go slice学习 | 一望无垠" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/05/12/有趣的tick/" data-title="有趣的tick | 一望无垠" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -127,7 +115,24 @@
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/05/12/中文测试/"  title="中文测试">
+ <strong>下一篇：</strong><br/> 
+ <span>中文测试
+</span>
+</a>
+</div>
+
+</nav>
+
 	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/05/12/有趣的tick/" data-title="有趣的tick" data-url="http://yoursite.com/2015/05/12/有趣的tick/"></div>
+</section>
+
 
 </div>  
     </div>
@@ -269,6 +274,18 @@ $(document).ready(function(){
 </script>
 
 
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ruocaiwu"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
