@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>记一次上线作业 - Jekyll Theme</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="luanote" />
+        <meta name="description" content="Just another Jekyll theme design and code by zhanxin.info." />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="http://jekyllrb.com/favicon.png" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/post.css">
+        
+    </head>
+    <body>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                首页
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                分类目录
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/archives.html">
+                                文章归档
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/contact.html">
+                                联系我
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                友情链接
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://github.com/luanote" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main" witdh=800px !important>
+                    <div class="article article-post">
+    <h2 class="title">记一次上线作业</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">15 May 2015</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#技术shelldatabase-ref" >技术shelldatabase</a></span>
+    </div>
+    <h2 id="section">剧情开头是这样的：</h2>
+<p>　　最近游戏里新做了一个功能，按上线下线时间给玩家发一定的资源和经验，显然这和上线下线时间有关，我们在玩家登录的时候记录登录时间，同理登出，由于沿用之前的代码，我认为这个时间相对的靠谱，而且主程也很自信的认为这个时间肯定是非常准确的，但在功能上线一段时间后，内部有人发现，当用一个设备“顶号”会出现不断的发送资源。定位这个问题，最后我们发现重新登录并没有记录上一次的离线时间，因此出现了一些玩家恶意刷资源的情况。我去处理了一些玩家，但是却出现了一些小小的风波。</p>
+
+<h2 id="section-1">作死是这样发生的：</h2>
+<p>　　处理一个玩家，需要对其 1.xxx 2.降级 3.将玩家装备等级降为同等等级, 之前的步骤都很好处理，作死在于涉及到处理玩家装备的SQL语句，表结构是这样: <em>wuqi : pid, gid, level</em>, 所以我认为是我以老司机的经验处理起来像<em>easy as a + b problem</em>.然后几秒过后写出了这样的shell:</p>
+
+<div class="highlight"><pre><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;select * from test.wuqi where pid = 1&quot;</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;select gid from test.wuqi where pid = 1 and level &gt; 100&quot;</span> <span class="o">|</span> <span class="k">while</span> <span class="k">read</span> <span class="n">gid</span>
+<span class="n">do</span>
+    <span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;update test.wuqi set level = 90 where pid = 1 and gid = $gid&quot;</span><span class="p">;</span>
+<span class="n">done</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;select * from test.wuqi where pid = 1&quot;</span></code></pre></div>
+
+<p>　　执行完整个shell，瞬间整个人都不好了，为什么所有装备全变成了90！？ 这不应该啊，定了定神, 然后我把这件事情告诉了leader, 然后leader同意了对该玩家的暂时“冰冻”，我恢复了该玩家之前的装备等级，并手工执行了一遍该做的sql语句。处理完后，回到了这个突然而来的事故。</p>
+
+<h2 id="section-2">作死的原因：</h2>
+<p>　　回归到shell，我echo出来了shell的执行。发现了第一行就打印了<strong>update test.wuqi set level = 90 where pid = 1 and gid = gid</strong>，居然执行了这样一条语句，read的第一行是”gid”，而不是我想要的gid, 这样的sql语句将会将该玩家所以武器都变为90级。一番调查过后，我对shell整理过后它变成了</p>
+
+<div class="highlight"><pre><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;select gid from test.wuqi where pid = 1 and level &gt; 100&quot;</span> <span class="o">|</span> <span class="k">while</span> <span class="k">read</span> <span class="n">gid</span>
+<span class="n">do</span>
+    <span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;update test.wuqi set level = 90 where pid = 1 and gid = $gid&quot;</span><span class="p">;</span>
+ <span class="err">↓</span> 
+<span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">N</span> <span class="o">-</span><span class="n">B</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;select gid from test.wuqi where pid = 1 and level &gt; 100&quot;</span> <span class="o">|</span> <span class="k">while</span> <span class="k">read</span> <span class="n">gid</span>
+<span class="n">do</span>
+    <span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;update test.wuqi set level = 90 where pid = 1 and gid = &#39;$gid&#39;&quot;</span><span class="p">;</span></code></pre></div>
+
+<p>　　使用-N -B处理是一个很好的习惯，条件查找中使用’‘使其变为值也是一个很习惯,在查询过程中我看到一个陌生而又熟悉的词汇 <strong><em>最左前缀</em></strong>  以及mysql中的  <strong><em>explain</em></strong> 。</p>
+
+
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="/trick/2015/05/12/trick.html" rel="bookmark">&laquo;&nbsp;有趣的trick</a>
+        
+        
+    </nav>
+    <div class="comment">
+        
+            
+        
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="footer">
+                <p>Copyright 2015. All rights reserved. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, Design by <a href="http://www.zhanxin.info" target="_blank">掌心</a>.</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+            
+                
+            
+        
+    </body>
+</html>
